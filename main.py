@@ -12,4 +12,4 @@ class MyClient(discord.Client):
 client = MyClient()
 """VC = discord.VoiceClient(client,"General")
 await VC.connect(reconnect=True,timeout=60);"""
-client.run('ODU0MzAxMTA1Mjc4Mjg3ODky.YMh75w.ZrFwWXDW5l-1AzK-NvbNjKNbcDw')
+client.run('token')
