@@ -1,30 +1,42 @@
 import asyncio
-
 import discord
+import os
 
 from discord.ext import commands
 
 
-medm={}   """Dictionary that contains your Memes in any audio format key:Meme name key-value: location of audio on machine"""
+dirn = os.path.dirname(__file__)
+filename = os.path.join(dirn, 'Ignored','key.txt')
+
+f = open(filename, "r")
+key_string=f.read()
+
+medm={}
+
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
-                   description='Memebot')
+                   description='Relatively simple music bot example')
 
-
+""""@bot.event
+async def on_message(message):
+    await message.channel.send('Hello World!')"""
 @bot.command()
-async def Memelist(ctx):                        """List all the Memes that are currently in your database"""
+async def Memelist(ctx):
     opstr="They useable meme commands are: \n"
     for a in medm.keys():
         opstr+='\t'+a+'\n'
     await ctx.send(opstr)
 
+@bot.command()
+async def bolo(ctx):
+    await ctx.send("Kya");
 
-@bot.command()                                  """Meme command"""
+@bot.command()
 async def meme(ctx,mena):
     source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(medm[mena]))
     ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
-    await ctx.send(f'Now playing: {query}')
+    await ctx.send(f'Now playing: {mena}')
 
 @bot.event
 async def on_ready():
@@ -39,4 +51,4 @@ async def joinM(ctx, *, channel: discord.VoiceChannel):
             return await ctx.voice_client.move_to(channel)
         await channel.connect()
 
-bot.run('token')
+bot.run(key_string)
