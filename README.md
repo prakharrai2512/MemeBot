@@ -8,8 +8,8 @@
   FFMPEG download link: http://ffmpeg.org/download.html
 
 # Usage:
-  !Memelist: Lists all memes available
-  !joinM "channel" : makes the bot join the voice channel mentioned as "channel".  
+  !Memelist: Lists all memes available  
+  !joinM "channel" : makes the bot join the voice channel mentioned as "channel".    
   !meme "name" : Plays the meme with the given "name" if present in the sources.   
  
 # Dependencies:
