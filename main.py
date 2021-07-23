@@ -1,17 +1,21 @@
 import asyncio
 import discord
 import os
+import json
+import media_json
 
 from discord.ext import commands
 
+media_json.makeJson()
+medm = {}
+medm = json.loads(open('media.json').read())
+
 
 dirn = os.path.dirname(__file__)
-filename = os.path.join(dirn, 'Ignored','key.txt')
-
+filename = os.path.join(dirn,'key.txt')
 f = open(filename, "r")
 key_string=f.read()
 
-medm={}
 
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
